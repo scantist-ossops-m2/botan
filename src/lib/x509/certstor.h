@@ -86,6 +86,12 @@ class BOTAN_DLL Certificate_Store_In_Memory : public Certificate_Store
       explicit Certificate_Store_In_Memory(const X509_Certificate& cert);
 
       /**
+      * Adds given certificate list to the store.
+      */
+      explicit Certificate_Store_In_Memory(std::vector<std::shared_ptr<const X509_Certificate>> certs)
+         : m_certs(std::move(certs)) {}
+
+      /**
       * Create an empty store.
       */
       Certificate_Store_In_Memory() = default;
